@@ -122,7 +122,7 @@ add_tunnel() {
 
         while true; do
             read -r -p "Enter internal IP address with subnet, example 192.168.100.5/24 (from [Interface]):"$'\n' WG_IP
-            if echo "$WG_IP" | egrep -oq '^([0-9]{1,3}\.){3}[0-9]{1,3}/[0-9]+$'; then
+            if echo "$WG_IP" | grep -E -q '^([0-9]{1,3}\.){3}[0-9]{1,3}/[0-9]+$'; then
                 break
             else
                 echo "This IP is not valid. Please repeat"
@@ -251,7 +251,7 @@ EOF
 
         while true; do
             read -r -p "Enter internal IP address with subnet, example 192.168.100.5/24 (Address from [Interface]):"$'\n' AWG_IP
-            if echo "$AWG_IP" | egrep -oq '^([0-9]{1,3}\.){3}[0-9]{1,3}/[0-9]+$'; then
+            if echo "$AWG_IP" | grep -E -q '^([0-9]{1,3}\.){3}[0-9]{1,3}/[0-9]+$'; then
                 break
             else
                 echo "This IP is not valid. Please repeat"
@@ -701,7 +701,7 @@ add_internal_wg() {
 
     while true; do
         read -r -p "Enter internal IP address with subnet, example 192.168.100.5/24 (from [Interface]):"$'\n' WG_IP
-        if echo "$WG_IP" | egrep -oq '^([0-9]{1,3}\.){3}[0-9]{1,3}/[0-9]+$'; then
+        if echo "$WG_IP" | grep -E -q '^([0-9]{1,3}\.){3}[0-9]{1,3}/[0-9]+$'; then
             break
         else
             echo "This IP is not valid. Please repeat"
